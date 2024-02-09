@@ -45,10 +45,6 @@ struct EditDefinitionView: View {
 
         }
     }
-//    func save() {
-//        let newDefinition = Definition(englishTerm: englishTerm, spanishTerm: spanishTerm)
-//        context.insert(newDefinition)
-//    }
 }
 
 //#Preview {
