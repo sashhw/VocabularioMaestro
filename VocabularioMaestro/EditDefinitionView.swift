@@ -10,18 +10,14 @@ import SwiftUI
 
 struct EditDefinitionView: View {
     @Bindable var definition: Definition
-//    @State private var englishTerm = ""
-//    @State private var spanishTerm = ""
     @Environment(\.modelContext) var context
     @Environment(\.dismiss) var dismiss
-    let didTapDismiss: () -> Void
-    let didTapSave: () -> Void
 
     var body: some View {
         VStack {
             HStack {
                 Spacer()
-                Button { didTapDismiss() } label: {
+                Button { dismiss() } label: {
                     Image(systemName: "multiply")
                 }
                 .foregroundStyle(.black)
@@ -29,10 +25,14 @@ struct EditDefinitionView: View {
 
             }
             NavigationStack {
-                Form {
-                    TextField("English", text: $definition.englishTerm)
-                    TextField("Español", text: $definition.spanishTerm)
-                }
+                    Form {
+                        TextField("English", text: $definition.englishFlagImage)
+                        TextField("Español", text: $definition.spanishFlagImage)
+                    }
+                    Form {
+                        TextField("English", text: $definition.englishTerm)
+                        TextField("Español", text: $definition.spanishTerm)
+                    }
 
                 Button("Add term/agregar término") {
                     withAnimation {
@@ -40,21 +40,15 @@ struct EditDefinitionView: View {
                     }
                     dismiss()
                 }
+                .padding()
+                .background {
+                    Color("RosyBrown")
+                }
+                .foregroundStyle(.white)
+                .clipShape(.buttonBorder)
                 .disabled(definition.englishTerm.isEmpty && definition.spanishTerm.isEmpty)
             }
 
         }
     }
 }
-
-//#Preview {
-//    EditDefinitionView(
-//        definition: .init(
-//            englishTerm: "hello",
-//            spanishTerm: "hola",
-//            isCompleted: false
-//        ),
-//        didTapDismiss: {},
-//        didTapSave: {}
-//    )
-//}

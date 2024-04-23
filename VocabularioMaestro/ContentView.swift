@@ -12,11 +12,29 @@ struct ContentView: View {
         NavigationStack {
             VStack(spacing: 20) {
                 Text("Vocabulario Maestro")
-                NavigationLink("Start Learning") {
+                    .font(.largeTitle)
+                    .foregroundStyle(.white)
+                    .shadow(radius: 5)
+                    .padding(.bottom, 50)
+
+                NavigationLink {
                     VocabularyInputView()
+                } label: {
+                    Text("Start Learning")
+                        .foregroundStyle(.coralPink)
+                        .fontWeight(.semibold)
                 }
+                .padding()
+                .background(.white)
+                .clipShape(.buttonBorder)
+                .shadow(radius: 5)
             }
-            .padding()
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background{
+                Color(.deepPurple)
+                    .ignoresSafeArea()
+                    .opacity(0.7)
+            }
         }
     }
 }

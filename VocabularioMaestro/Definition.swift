@@ -9,21 +9,28 @@ import Foundation
 import SwiftData
 
 @Model
-final class Definition {
+final class Definition: Identifiable {
     @Attribute(.unique) var id: String
     var englishTerm: String
     var spanishTerm: String
     var isCompleted: Bool
+    var englishFlagImage: String
+    var spanishFlagImage: String
+
 
     init(
         englishTerm: String = "",
         spanishTerm: String = "",
-        isCompleted: Bool = false
+        isCompleted: Bool = false,
+        englishFlagImage: String = "",
+        spanishFlagImage: String = ""
     ) {
         self.id = UUID().uuidString
         self.englishTerm = englishTerm
         self.spanishTerm = spanishTerm
         self.isCompleted = isCompleted
+        self.englishFlagImage = englishFlagImage
+        self.spanishFlagImage = spanishFlagImage
     }
 }
 
